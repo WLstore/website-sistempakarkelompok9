@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Penyakit Padi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .nav-link { color: white; transition: all 0.3s; cursor: pointer; }
+        .nav-link.active { background-color: #4cae4c; font-weight: bold; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .gejala-option {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            transition: all 0.2s;
+            background: white;
+            user-select: none;
+        }
+        .gejala-option:hover { border-color: #5cb85c; }
+        input[type="checkbox"]:checked + .gejala-option {
+            border-color: #5cb85c;
+            background-color: #f0fdf4;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        input[type="checkbox"]:checked + .gejala-option .custom-checkbox {
+            background-color: #5cb85c;
+            border-color: #5cb85c;
+        }
+        input[type="checkbox"]:checked + .gejala-option .custom-checkbox::after {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: white;
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-2xl overflow-hidden min-h-[90vh] flex flex-col border border-gray-100">
+        
+        <header class="pt-10 pb-6 px-6 text-center">
+            <div class="flex items-center justify-center gap-3 mb-2">
+                <i class="fas fa-seedling text-4xl text-yellow-500"></i>
+                <h1 class="text-3xl md:text-4xl font-bold text-emerald-800 tracking-tight">Sistem Pakar Deteksi Penyakit Padi</h1>
+            </div>
+            <p class="text-gray-500 text-sm md:text-base">Membantu Petani Mengambil Keputusan dengan Cepat dan Akurat</p>
+        </header>
+
+        <nav class="px-6 mb-8">
+            <div class="bg-[#5cb85c] rounded-lg flex flex-wrap shadow-md overflow-hidden">
+                <button onclick="showSection('beranda')" id="btn-beranda" class="nav-link active px-6 py-3 flex-1 md:flex-none">Beranda</button>
+                <button onclick="showSection('basis-pengetahuan')" id="btn-basis-pengetahuan" class="nav-link px-6 py-3 flex-1 md:flex-none hover:bg-[#4cae4c]">Basis Pengetahuan</button>
+                <button onclick="showSection('konsultasi')" id="btn-konsultasi" class="nav-link px-6 py-3 flex-1 md:flex-none hover:bg-[#4cae4c]">Konsultasi</button>
+                <button onclick="showSection('tentang')" id="btn-tentang" class="nav-link px-6 py-3 flex-1 md:flex-none hover:bg-[#4cae4c]">Tentang</button>
+            </div>
+        </nav>
+
+        <main class="flex-grow px-6 md:px-12 pb-12">
+
+            <section id="beranda" class="content-section active">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-2xl font-bold text-emerald-700 mb-6 border-b-2 border-emerald-100 pb-2">Tentang Sistem Diagnosa</h2>
+                    
+                    <div class="space-y-6 text-gray-700 leading-relaxed">
+                        <p>
+                            <strong>Sistem Pakar Deteksi Penyakit Padi</strong> adalah sebuah platform digital yang dirancang untuk meniru keahlian seorang pakar pertanian dalam mendiagnosa gangguan kesehatan pada tanaman padi. Sistem ini bertujuan untuk memberikan solusi instan bagi petani dalam mengidentifikasi masalah di sawah tanpa harus menunggu penyuluh lapangan.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 py-4">
+                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                                <h4 class="font-bold text-emerald-800 mb-2 flex items-center">
+                                    <i class="fas fa-brain mr-2 text-emerald-600"></i> Metode Forward Chaining
+                                </h4>
+                                <p class="text-xs">Sistem bekerja dengan mengumpulkan fakta berupa gejala-gejala fisik yang Anda pilih, kemudian mencocokkannya dengan basis aturan (rules) untuk menarik kesimpulan penyakit yang paling tepat.</p>
+                            </div>
+                            <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                                <h4 class="font-bold text-emerald-800 mb-2 flex items-center">
+                                    <i class="fas fa-shield-alt mr-2 text-emerald-600"></i> Manfaat Utama
+                                </h4>
+                                <p class="text-xs">Membantu deteksi dini serangan penyakit untuk mencegah gagal panen, menghemat biaya konsultasi pakar, dan memberikan edukasi mengenai karakteristik berbagai penyakit padi.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-50 p-6 rounded-xl border border-emerald-100">
+                            <h4 class="font-bold text-emerald-800 mb-3">Langkah Penggunaan:</h4>
+                            <ol class="list-decimal list-inside space-y-2 text-sm">
+                                <li>Pelajari jenis penyakit dan gejalanya di menu <span class="font-semibold">Basis Pengetahuan</span>.</li>
+                                <li>Masuk ke menu <span class="font-semibold">Konsultasi</span> untuk memulai diagnosa.</li>
+                                <li>Amati tanaman padi Anda secara seksama di lapangan.</li>
+                                <li>Pilih semua gejala yang ditemukan, lalu klik tombol <span class="font-semibold text-emerald-700">"Proses Diagnosa"</span>.</li>
+                            </ol>
+                        </div>
+
+                        <div class="flex justify-center pt-4">
+                            <button onclick="showSection('konsultasi')" class="bg-[#5cb85c] hover:bg-[#4cae4c] text-white font-bold py-4 px-12 rounded-xl shadow-lg transition-all active:scale-95 flex items-center gap-2">
+                                <i class="fas fa-play-circle"></i> Mulai Konsultasi Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="basis-pengetahuan" class="content-section">
+                <h2 class="text-2xl font-bold text-emerald-700 mb-6">Basis Pengetahuan (Tabel Aturan)</h2>
+                <div class="overflow-x-auto rounded-xl border border-gray-200 shadow-sm mb-8">
+                    <table class="w-full text-sm text-left">
+                        <thead class="bg-emerald-50 text-emerald-800 uppercase text-xs">
+                            <tr>
+                                <th class="p-4 border-b">Rule</th>
+                                <th class="p-4 border-b">Kode</th>
+                                <th class="p-4 border-b">IF (Daftar Gejala)</th>
+                                <th class="p-4 border-b">THEN (Penyakit)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabel-aturan" class="divide-y divide-gray-100"></tbody>
+                    </table>
+                </div>
+                <h3 class="font-bold text-emerald-800 mb-4 italic">Keterangan Kode Gejala:</h3>
+                <div id="daftar-keterangan-gejala" class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-gray-600"></div>
+            </section>
+
+            <section id="konsultasi" class="content-section">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <h3 class="text-xl font-bold mb-6 text-emerald-800 flex items-center">
+                             <i class="fas fa-clipboard-list mr-2"></i> Pilih Gejala yang Teramati:
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="daftar-gejala-pilih"></div>
+                        <button onclick="prosesDiagnosa()" class="w-full mt-8 bg-[#5cb85c] hover:bg-[#4cae4c] text-white font-bold py-4 rounded-xl shadow-lg transition-all text-lg">
+                            Proses Diagnosa
+                        </button>
+                    </div>
+
+                    <div class="lg:col-span-1">
+                        <div class="bg-white border-2 border-emerald-100 rounded-2xl p-6 sticky top-4 shadow-sm">
+                            <h3 class="font-bold text-lg text-emerald-800 mb-4 border-b pb-2 flex items-center">
+                                <i class="fas fa-poll mr-2"></i> Hasil Analisis
+                            </h3>
+                            <div id="hasil-diagnosa" class="text-gray-500 italic text-sm">
+                                Hasil diagnosa akan muncul di sini setelah Anda memilih gejala.
+                            </div>
+                            <button onclick="resetGejala()" class="mt-6 w-full text-xs text-red-500 font-medium hover:underline">
+                                <i class="fas fa-trash-alt mr-1"></i> Bersihkan Pilihan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tentang" class="content-section">
+                <div class="max-w-3xl mx-auto py-6">
+                    <div class="text-center mb-8">
+                        <i class="fas fa-info-circle text-5xl text-emerald-500 mb-4"></i>
+                        <h2 class="text-2xl font-bold text-emerald-700">Informasi Proyek</h2>
+                    </div>
+                    <div class="space-y-6 text-gray-700">
+                        <div class="p-6 bg-white rounded-xl border border-gray-100 shadow-sm">
+                            <p class="text-sm leading-relaxed">Sistem Pakar ini dikembangkan sesuai dengan kriteria <strong>Tugas Projek 2</strong>. Data gejala (G01-G16) dan basis aturan (Rule 1-7) sepenuhnya mengikuti dokumen perancangan sistem pertanian yang telah divalidasi.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="py-6 border-t border-gray-100 text-center text-gray-400 text-xs">
+            <p>© 2026 Projek Sistem Pakar - Kelompok Tanaman Padi</p>
+        </footer>
+    </div>
+
+    <script>
+        const dataGejala = [
+            { id: "G01", nama: "Daun menguning tidak merata pada rumpun tertentu" },
+            { id: "G02", nama: "Terdapat bercak coklat oval pada daun" },
+            { id: "G03", nama: "Daun mengering mulai dari ujung" },
+            { id: "G04", nama: "Daun menguning dan menggulung" },
+            { id: "G05", nama: "Terdapat bercak keabu-abuan di tepi daun" },
+            { id: "G06", nama: "Leher malai membusuk dan mudah patah" },
+            { id: "G07", nama: "Bercak coklat menyatu membentuk luka memanjang pada daun" },
+            { id: "G08", nama: "Daun muda terserang, muncul bercak berbentuk huruf V di tepi daun" },
+            { id: "G09", nama: "Batang tampak busuk dan berwarna coklat kehitaman dekat permukaan air" },
+            { id: "G10", nama: "Tanaman roboh meski akar masih menancap" },
+            { id: "G11", nama: "Malai terbentuk tetapi banyak bulir hampa" },
+            { id: "G12", nama: "Bulir padi kecil dan keriput" },
+            { id: "G13", nama: "Malai keluar terlambat dan tidak sempurna" },
+            { id: "G14", nama: "Tanaman kerdil dan pertumbuhan terhambat" },
+            { id: "G15", nama: "Daun muda berwarna kuning pucat" },
+            { id: "G16", nama: "Akar pendek dan sedikit" }
+        ];
+
+        const rules = [
+            { rule: 1, kode: "P01", nama: "Tungro", syarat: ["G01", "G02", "G03", "G04", "G05"] },
+            { rule: 2, kode: "P02", nama: "Hawar Daun Bakteri", syarat: ["G01", "G04", "G05", "G06", "G08"] },
+            { rule: 3, kode: "P03", nama: "Bercak Coklat", syarat: ["G02", "G03", "G07", "G08", "G05"] },
+            { rule: 4, kode: "P04", nama: "Blast/Hawar Daun", syarat: ["G02", "G03", "G06", "G08", "G07"] },
+            { rule: 5, kode: "P05", nama: "Busuk Batang", syarat: ["G01", "G09", "G10", "G14", "G16"] },
+            { rule: 6, kode: "P06", nama: "Gagal Malai/Empty Grain", syarat: ["G11", "G12", "G13", "G14", "G15"] },
+            { rule: 7, kode: "P07", nama: "Penyakit Lain", syarat: ["G14", "G15", "G16", "G01", "G04"] }
+        ];
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById('btn-' + sectionId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function init() {
+            const gejalaPilih = document.getElementById('daftar-gejala-pilih');
+            dataGejala.forEach(g => {
+                gejalaPilih.innerHTML += `
+                    <div>
+                        <input type="checkbox" id="check-${g.id}" value="${g.id}" class="hidden">
+                        <label for="check-${g.id}" class="gejala-option">
+                            <div class="custom-checkbox"></div>
+                            <span class="text-[11px] font-medium text-gray-700">${g.id}: ${g.nama}</span>
+                        </label>
+                    </div>`;
+            });
+
+            const tabelBody = document.getElementById('tabel-aturan');
+            rules.forEach(r => {
+                tabelBody.innerHTML += `
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-4 border-b text-gray-400 font-mono text-xs">${r.rule}</td>
+                        <td class="p-4 border-b font-bold text-emerald-700">${r.kode}</td>
+                        <td class="p-4 border-b text-[10px] text-gray-500">${r.syarat.join(', ')}</td>
+                        <td class="p-4 border-b font-medium text-xs">${r.nama}</td>
+                    </tr>`;
+            });
+
+            const ketGejala = document.getElementById('daftar-keterangan-gejala');
+            dataGejala.forEach(g => {
+                ketGejala.innerHTML += `<div><strong>${g.id}:</strong> ${g.nama}</div>`;
+            });
+        }
+
+        function prosesDiagnosa() {
+            const terpilih = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(c => c.value);
+            const hasilDiv = document.getElementById('hasil-diagnosa');
+            
+            if (terpilih.length === 0) {
+                alert("Pilih gejala terlebih dahulu.");
+                return;
+            }
+
+            let hasilMatch = rules.filter(rule => rule.syarat.every(s => terpilih.includes(s)));
+
+            if (hasilMatch.length > 0) {
+                let html = '<div class="space-y-4">';
+                hasilMatch.forEach(h => {
+                    html += `
+                        <div class="p-4 bg-emerald-50 border-l-4 border-emerald-500 rounded-lg">
+                            <p class="text-[10px] font-bold text-emerald-600 uppercase">Diagnosa Berhasil:</p>
+                            <h4 class="text-xl font-bold text-emerald-900">${h.nama}</h4>
+                            <p class="text-[10px] text-emerald-700 mt-1 italic">Rule ${h.rule}</p>
+                        </div>`;
+                });
+                html += '</div>';
+                hasilDiv.innerHTML = html;
+            } else {
+                hasilDiv.innerHTML = `
+                    <div class="p-4 bg-amber-50 border-l-4 border-amber-400 rounded-lg text-center">
+                        <p class="text-amber-800 font-bold text-xs">Belum Ada Kecocokan</p>
+                        <p class="text-[10px] text-amber-700">Silakan periksa kembali pilihan gejala Anda sesuai dengan Basis Pengetahuan.</p>
+                    </div>`;
+            }
+        }
+
+        function resetGejala() {
+            document.querySelectorAll('input[type="checkbox"]').forEach(c => c.checked = false);
+            document.getElementById('hasil-diagnosa').innerHTML = 'Hasil diagnosa akan muncul di sini.';
+        }
+
+            init();
+        </script>
+    </body>
+</html>
